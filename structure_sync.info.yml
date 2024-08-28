@@ -1,5 +1,5 @@
 name: 'Structure Sync'
-description: 'FortBend StyleGuide_V3.8'
+description: 'FortBend StyleGuide_V4.0'
 core_version_requirement: ^8 || ^9 || ^10 || ^11
 configure: structure_sync.general.form
 dependencies:
