@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function structure_sync_theme($existing, $type, $theme, $path) {
+  return [
+    'my_template' => [
+      'variables' => ['test_var' => NULL],
+    ],
+  ];
+}
+
+
+
+?>

@@ -1,0 +1,495 @@
+    <link href="https://favicon.fortbendcountytx.gov/form.png" rel="icon" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" />
+    <!-- Custom Styles -->
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    <link href="https://fbcscripts.fortbendcountytx.gov/css/form-styles.css" rel="stylesheet" />
+    <!-- Header Scripts -->
+    <script src="https://fbcscripts.fortbendcountytx.gov/js/external.js"></script>
+    {{ attach_library('structure_sync/new_library') }}
+    <header>
+        <div id="top"></div>
+        <div class="container">
+            <!-- Use "container-fluid" only if form will be embedded onto a web page (e.g., in an iframe). If form will not be embedded and is intended to stand alone, use "container" (without the "-fluid") instead.-->
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-center">Name of Form</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="flex-shrink-0">
+        <div class="container-fluid mb-5">
+            <!-- Use "container-fluid" only if form will be embedded onto a page. If form will not be embedded, use "container" instead.-->
+            <div class="row">
+                <div class="col">
+                    <p>Enter any introductory content about the form here if applicable. If there is no introductory content, remove this paragraph.</p>
+                    <p>Questions indicated with an <span class="required">*</span> (asterisk) are required.</p> <!-- Keep this here -->
+                    <form action="process.php" autocomplete="off" enctype="multipart/form-data" method="post"> <!-- Process.php on the Form server can be used to perform a simple email test. To save data into a database or perform other custom processing, you will need to create your own processing file. -->
+                        
+                        <!-- The fields below provide examples that you can copy, paste, and adapt to your needs. Update the names and IDs as needed. The names and IDs should be brief and always represent the purpose of the field. Note: For ADA compliance, the label's "for" attribute must always match the ID of the field. -->
+
+                        <!-- Fieldsets and Legends can be used to present the fields into categorized sections to make the fields appear more organized for the user. -->
+
+                        <!-- Similar and related fields should be grouped together, using multiple bootstrap columns if appropriate to make the form seem less lengthy. If the Bootstrap code is used correctly, the form will be responsive and the multiple columns will collapse into single columns for mobile screens. -->
+                        <fieldset>
+                            <legend>General Information</legend>
+                            <div class="form-group row gy-3 mb-4">
+                                <!-- Name should always be separated into separate fields for First and Last Name -->
+                                <!-- Auto complete should only be activated for common contact information fields. Autofocus should be activated for the very first field on the page. -->
+                                <div class="col-md-6">
+                                    <label for="First_Name" class="form-label">First Name: <span class="required">*</span></label>
+                                    <input autocomplete="on" autofocus maxlength="100" name="First_Name" required type="text" class="form-control" data-lpignore="true" id="First_Name">
+                                    <div class="form-text">100 characters max</div> <!-- Helper text should be used if the field has certain requirements or constraints that the user may not otherwise be aware of -->
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="Last_Name" class="form-label">Last Name: <span class="required">*</span></label>
+                                    <input autocomplete="on" maxlength="100" name="Last_Name" required type="text" class="form-control" data-lpignore="true" id="Last_Name">
+                                    <div class="form-text">100 characters max</div>
+                                </div>
+                                <!-- Email should always be required. The format is validated by the mask. The mask requires the type to be set to "text" -->
+                                <div class="col-md-6">
+                                    <label for="Email" class="form-label">Email: <span class="required">*</span></label>
+                                    <input autocomplete="on" maxlength="100" name="Email" required type="text" class="form-control" data-lpignore="true" id="Email" mask="email">
+                                    <div class="form-text">100 characters max</div>
+                                </div>
+                                <!-- The Confirm email field is only needed if extra validation is necessary or if the customer requests it. If you don't need to confirm their email address, then remove this field. jQuery script above checks to ensure both email addresses match. -->
+                                <div class="col-md-6">
+                                    <label for="Confirm_Email" class="form-label">Confirm Email: <span class="required">*</span></label>
+                                    <input autocomplete="on" maxlength="100" name="Confirm_Email" required type="text" class="form-control" data-lpignore="true" id="Confirm_Email" mask="email">
+                                    <div class="form-text">100 characters max</div>
+                                </div>
+                                <!-- The format is validated by the mask. The mask requires the type to be set to "text" -->
+                                <div class="col-md-6">
+                                    <label for="Phone" class="form-label">Phone: <span class="required">*</span></label>
+                                    <input autocomplete="on" maxlength="14" name="Phone" required type="text" class="form-control" data-lpignore="true" id="Phone" mask="tel">
+                                    <div class="form-text">10 digits max</div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="Website" class="form-label">Website:</label>
+                                    <input autocomplete="on" maxlength="300" name="Website" type="url" class="form-control" data-lpignore="true" id="Website">
+                                    <div class="form-text">300 characters max</div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <hr>
+                        <fieldset>
+                            <legend>Address</legend>
+                            <div class="form-group row gy-3 mb-4">
+                                <div class="col-12">
+                                    <label for="Address_1" class="form-label">Address:</label>
+                                    <input autocomplete="on" maxlength="100" name="Address_1" type="text" class="form-control" data-lpignore="true" id="Address_1" mask="address-street">
+                                    <div class="form-text">100 characters max</div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="Address_2" class="form-label">Address Line 2:</label>
+                                    <input autocomplete="on" maxlength="100" name="Address_2" type="text" class="form-control" data-lpignore="true" id="Address_2" mask="address-street">
+                                    <div class="form-text">100 characters max</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="City" class="form-label">City:</label>
+                                    <input autocomplete="on" maxlength="100" name="City" type="text" class="form-control" data-lpignore="true" id="City" mask="address-city">
+                                    <div class="form-text">100 characters max</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="State" class="form-label">State</label>
+                                    <select name="State" class="form-select" id="State">
+                                        <option selected value="">Select your state</option>
+                                        <optgroup label="US States">
+                                            <option value="AL">AL</option>
+                                            <option value="AK">AK</option>
+                                            <option value="AR">AR</option>
+                                            <option value="AZ">AZ</option>
+                                            <option value="CA">CA</option>
+                                            <option value="CO">CO</option>
+                                            <option value="CT">CT</option>
+                                            <option value="DC">DC</option>
+                                            <option value="DE">DE</option>
+                                            <option value="FL">FL</option>
+                                            <option value="GA">GA</option>
+                                            <option value="HI">HI</option>
+                                            <option value="IA">IA</option>
+                                            <option value="ID">ID</option>
+                                            <option value="IL">IL</option>
+                                            <option value="IN">IN</option>
+                                            <option value="KS">KS</option>
+                                            <option value="KY">KY</option>
+                                            <option value="LA">LA</option>
+                                            <option value="MA">MA</option>
+                                            <option value="MD">MD</option>
+                                            <option value="ME">ME</option>
+                                            <option value="MI">MI</option>
+                                            <option value="MN">MN</option>
+                                            <option value="MO">MO</option>
+                                            <option value="MS">MS</option>
+                                            <option value="MT">MT</option>
+                                            <option value="NC">NC</option>
+                                            <option value="NE">NE</option>
+                                            <option value="NH">NH</option>
+                                            <option value="NJ">NJ</option>
+                                            <option value="NM">NM</option>
+                                            <option value="NV">NV</option>
+                                            <option value="NY">NY</option>
+                                            <option value="ND">ND</option>
+                                            <option value="OH">OH</option>
+                                            <option value="OK">OK</option>
+                                            <option value="OR">OR</option>
+                                            <option value="PA">PA</option>
+                                            <option value="RI">RI</option>
+                                            <option value="SC">SC</option>
+                                            <option value="SD">SD</option>
+                                            <option value="TN">TN</option>
+                                            <option value="TX">TX</option>
+                                            <option value="UT">UT</option>
+                                            <option value="VT">VT</option>
+                                            <option value="VA">VA</option>
+                                            <option value="WA">WA</option>
+                                            <option value="WI">WI</option>
+                                            <option value="WV">WV</option>
+                                            <option value="WY">WY</option>
+                                        </optgroup>
+                                        <optgroup label="US Outlying Territories">
+                                            <option value="AS">AS</option>
+                                            <option value="GU">GU</option>
+                                            <option value="MP">MP</option>
+                                            <option value="PR">PR</option>
+                                            <option value="UM">UM</option>
+                                            <option value="VI">VI</option>
+                                        </optgroup>
+                                        <optgroup label="Armed Forces">
+                                            <option value="AA">AA</option>
+                                            <option value="AP">AP</option>
+                                            <option value="AE">AE</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="Zip" class="form-label">Zip:</label>
+                                    <input autocomplete="on" maxlength="5" name="Zip" type="text" class="form-control" data-lpignore="true" id="Zip" mask="zip">
+                                    <div class="form-text">5 digits max</div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <hr>
+                        <fieldset>
+                            <legend>Additional Field Examples</legend>
+                            <div class="form-group row gy-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="Date" class="form-label">Date Selector:</label>
+                                    <input name="Date" type="text" class="form-control" id="Date">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="Time" class="form-label">Time Selector:</label>
+                                    <input name="Time" type="time" class="form-control" id="Time" mask="time" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="Number" class="form-label">Number Selector:</label>
+                                    <input maxlength="2" max="99" min="1" name="Number" type="number" class="form-control" id="Number" mask="number" />
+                                    <div class="form-text">Enter a number between 1 and 99</div>
+                                </div>
+                            </div>
+                            <div class="form-group row gy-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="Dropdown" class="form-label">Dropdown with Other Field:</label>
+                                    <select name="Dropdown" class="form-select" id="Dropdown">
+                                        <option selected value="">Please select</option>
+                                        <option value="Item 1">Item 1</option>
+                                        <option value="Item 2">Item 2</option>
+                                        <option value="Item 3">Item 3</option>
+                                        <option value="Item 4">Item 4</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <!-- jQuery script above activates Other field and makes field required if option is selected in dropdown. If option is deselected, the field is hidden and required attribute removed. -->
+                                <div class="col-md-6" id="Dropdown_Other_div" style="display: none;">
+                                    <label for="Dropdown_Other" class="form-label">Other (please specify) <span class="required">*</span></label>
+                                    <input maxlength="100" name="Dropdown_Other" type="text" class="form-control" data-lpignore="true" id="Dropdown_Other" />
+                                    <div class="form-text">100 characters max</div>
+                                </div>
+                            </div>
+                            <div class="form-group row gy-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="Department" class="form-label">Department Selection Dropdown:</label>
+                                    <select name="Department" class="form-select" id="Department">
+                                        <option selected value="0">Select Department</option>
+                                        <option value="240th/400th Dist Ct Assoc. Jdg"> 240th/400th Dist Ct Assoc. Jdg </option>
+                                        <option value="268th Dist Ct Assoc. Jdg"> 268th Dist Ct Assoc. Jdg </option>
+                                        <option value="434th Dist Ct Assoc. Jdg"> 434th Dist Ct Assoc. Jdg </option>
+                                        <option value="Assoc County Courts at Law A"> Assoc County Courts at Law A </option>
+                                        <option value="Assoc County Courts at Law B"> Assoc County Courts at Law B </option>
+                                        <option value="Associate County Court at Law "> Associate County Court at Law </option>
+                                        <option value="Bail Bond Board"> Bail Bond Board </option>
+                                        <option value="Behavioral Health Services"> Behavioral Health Services </option>
+                                        <option value="Budget Office"> Budget Office </option>
+                                        <option value="Child Support"> Child Support </option>
+                                        <option value="Civil Service Commission"> Civil Service Commission </option>
+                                        <option value="Co Treasurer-Court Collections"> Co Treasurer-Court Collections </option>
+                                        <option value="Co Treasurer-EMS Collections"> Co Treasurer-EMS Collections </option>
+                                        <option value="Co Treasurer-Payroll"> Co Treasurer-Payroll </option>
+                                        <option value="Commissioner Pct 1"> Commissioner Pct 1 </option>
+                                        <option value="Commissioner Pct 2"> Commissioner Pct 2 </option>
+                                        <option value="Commissioner Pct 3"> Commissioner Pct 3 </option>
+                                        <option value="Commissioner Pct 4"> Commissioner Pct 4 </option>
+                                        <option value="Community Development"> Community Development </option>
+                                        <option value="Community Supervision & Correc"> Community Supervision & Correc </option>
+                                        <option value="Constable Pct 1"> Constable Pct 1 </option>
+                                        <option value="Constable Pct 2"> Constable Pct 2 </option>
+                                        <option value="Constable Pct 3"> Constable Pct 3 </option>
+                                        <option value="Constable Pct 4"> Constable Pct 4 </option>
+                                        <option value="County Attorney"> County Attorney </option>
+                                        <option value="County Auditor"> County Auditor </option>
+                                        <option value="County Clerk"> County Clerk </option>
+                                        <option value="County Court At Law #1"> County Court At Law #1 </option>
+                                        <option value="County Court at Law #2"> County Court at Law #2 </option>
+                                        <option value="County Court at Law #3"> County Court at Law #3 </option>
+                                        <option value="County Court at Law #4"> County Court at Law #4 </option>
+                                        <option value="County Court at Law #5"> County Court at Law #5 </option>
+                                        <option value="County Court at Law #6"> County Court at Law #6 </option>
+                                        <option value="County Judge"> County Judge </option>
+                                        <option value="County Tax Assessor/Collector "> County Tax Assessor/Collector </option>
+                                        <option value="County Treasurer"> County Treasurer </option>
+                                        <option value="Courts Administration"> Courts Administration </option>
+                                        <option value="Daily Park"> Daily Park </option>
+                                        <option value="Death Investigators"> Death Investigators </option>
+                                        <option value="Department of Public Safety"> Department of Public Safety </option>
+                                        <option value="District Attorney"> District Attorney </option>
+                                        <option value="District Clerk"> District Clerk </option>
+                                        <option value="District Court - 240th"> District Court - 240th </option>
+                                        <option value="District Court - 268th"> District Court - 268th </option>
+                                        <option value="District Court - 328th"> District Court - 328th </option>
+                                        <option value="District Court - 387th"> District Court - 387th </option>
+                                        <option value="District Court - 400th"> District Court - 400th </option>
+                                        <option value="District Court - 434th"> District Court - 434th </option>
+                                        <option value="District Court - 458th"> District Court - 458th </option>
+                                        <option value="District Court - 505th"> District Court - 505th </option>
+                                        <option value="Drainage District"> Drainage District </option>
+                                        <option value="Elections/Voters Registration "> Elections/Voters Registration </option>
+                                        <option value="Engineering"> Engineering </option>
+                                        <option value="Facilities & Planning"> Facilities & Planning </option>
+                                        <option value="Facilities Custodial"> Facilities Custodial </option>
+                                        <option value="Facilities Interdept. Construc"> Facilities Interdept. Construc </option>
+                                        <option value="Facilities Jail Maintenance"> Facilities Jail Maintenance </option>
+                                        <option value="Facilities Maintenance"> Facilities Maintenance </option>
+                                        <option value="Facilities Operations"> Facilities Operations </option>
+                                        <option value="Fairgrounds"> Fairgrounds </option>
+                                        <option value="Fire Marshal"> Fire Marshal </option>
+                                        <option value="Health & Human Services"> Health & Human Services </option>
+                                        <option value="HHS-Animal Services"> HHS-Animal Services </option>
+                                        <option value="HHS-Clinical Health"> HHS-Clinical Health </option>
+                                        <option value="HHS-Emergency Medical Service"> HHS-Emergency Medical Service </option>
+                                        <option value="HHS-Environmental Health"> HHS-Environmental Health </option>
+                                        <option value="HHS-Indigent Health Care"> HHS-Indigent Health Care </option>
+                                        <option value="HHS-Senior Center"> HHS-Senior Center </option>
+                                        <option value="HHS-Social Services"> HHS-Social Services </option>
+                                        <option value="Homeland Sec & Emergency Mgmt "> Homeland Sec & Emergency Mgmt </option>
+                                        <option value="Human Resources"> Human Resources </option>
+                                        <option value="Indigent Defense Program"> Indigent Defense Program </option>
+                                        <option value="Information Technology"> Information Technology </option>
+                                        <option value="Interdepartmental Construction"> Interdepartmental Construction </option>
+                                        <option value="Jones Creek Ranch Park"> Jones Creek Ranch Park </option>
+                                        <option value="Justice of the Peace Pct 1-1"> Justice of the Peace Pct 1-1 </option>
+                                        <option value="Justice of the Peace Pct 1-2"> Justice of the Peace Pct 1-2 </option>
+                                        <option value="Justice of the Peace Pct 2"> Justice of the Peace Pct 2 </option>
+                                        <option value="Justice of the Peace Pct 3"> Justice of the Peace Pct 3 </option>
+                                        <option value="Justice of the Peace Pct 4"> Justice of the Peace Pct 4 </option>
+                                        <option value="Juvenile Probation"> Juvenile Probation </option>
+                                        <option value="Law Library"> Law Library </option>
+                                        <option value="Library-Administration"> Library-Administration </option>
+                                        <option value="Library-Adult Services"> Library-Adult Services </option>
+                                        <option value="Library-Albert George Branch"> Library-Albert George Branch </option>
+                                        <option value="Library-Audio Visual"> Library-Audio Visual </option>
+                                        <option value="Library-Circulation"> Library-Circulation </option>
+                                        <option value="Library-First Colony Branch"> Library-First Colony Branch </option>
+                                        <option value="Library-Fulshear Branch"> Library-Fulshear Branch </option>
+                                        <option value="Library-Geneology"> Library-Geneology </option>
+                                        <option value="Library-Katy/Cinco Branch"> Library-Katy/Cinco Branch </option>
+                                        <option value="Library-Mamie George Branch"> Library-Mamie George Branch </option>
+                                        <option value="Library-Mission Bend Branch"> Library-Mission Bend Branch </option>
+                                        <option value="Library-Missouri City Branch"> Library-Missouri City Branch </option>
+                                        <option value="Library-Sienna Branch"> Library-Sienna Branch </option>
+                                        <option value="Library-Sugar Land Branch"> Library-Sugar Land Branch </option>
+                                        <option value="Library-Support Services"> Library-Support Services </option>
+                                        <option value="Library-Technology"> Library-Technology </option>
+                                        <option value="Library-University Branch"> Library-University Branch </option>
+                                        <option value="Library-Youth Services"> Library-Youth Services </option>
+                                        <option value="Mail Center"> Mail Center </option>
+                                        <option value="Medical Examiner"> Medical Examiner </option>
+                                        <option value="Non-Departmental"> Non-Departmental </option>
+                                        <option value="Parks & Recreation"> Parks & Recreation </option>
+                                        <option value="Public Defender"> Public Defender </option>
+                                        <option value="Public Transportation"> Public Transportation </option>
+                                        <option value="Purchasing"> Purchasing </option>
+                                        <option value="Records Management"> Records Management </option>
+                                        <option value="Retiree/Survivor"> Retiree/Survivor </option>
+                                        <option value="Risk Management"> Risk Management </option>
+                                        <option value="Road & Bridge-Beechnut"> Road & Bridge-Beechnut </option>
+                                        <option value="Road & Bridge-Crabb"> Road & Bridge-Crabb </option>
+                                        <option value="Road & Bridge-Dairy Ashford"> Road & Bridge-Dairy Ashford </option>
+                                        <option value="Road & Bridge-Needville"> Road & Bridge-Needville </option>
+                                        <option value="Sheriff-Academy"> Sheriff-Academy </option>
+                                        <option value="Sheriff-Administration"> Sheriff-Administration </option>
+                                        <option value="Sheriff-Bailiffs"> Sheriff-Bailiffs </option>
+                                        <option value="Sheriff-CIT"> Sheriff-CIT </option>
+                                        <option value="Sheriff-Court Services/Records"> Sheriff-Court Services/Records </option>
+                                        <option value="Sheriff-Criminal Investigation"> Sheriff-Criminal Investigation </option>
+                                        <option value="Sheriff-Detention"> Sheriff-Detention </option>
+                                        <option value="Sheriff-Emergency Ops/Communic"> Sheriff-Emergency Ops/Communic </option>
+                                        <option value="Sheriff-Narcotics Task Force  "> Sheriff-Narcotics Task Force </option>
+                                        <option value="Sheriff-Patrol"> Sheriff-Patrol </option>
+                                        <option value="Sheriff-Support Srvcs/Fiscal"> Sheriff-Support Srvcs/Fiscal </option>
+                                        <option value="Special Magistrate Court"> Special Magistrate Court </option>
+                                        <option value="TX A&M AgriLife Ext Svc"> TX A&M AgriLife Ext Svc </option>
+                                        <option value="Vehicle Maintenance"> Vehicle Maintenance </option>
+                                        <option value="Veterans Service Office"> Veterans Service Office </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row gy-3 mb-4">
+                                <div class="col-md-6">
+                                    <p>Checkboxes inline (use this layout if option labels are simple - just a few words):</p>
+                                    <div class="form-check form-check-inline">
+                                        <input name="Checkbox_inline[]" type="checkbox" value="Option 1" class="form-check-input" id="Checkbox_inline_1" />
+                                        <label for="Checkbox_inline_1" class="form-check-label">Option 1</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="Checkbox_inline[]" type="checkbox" value="Option 2" class="form-check-input" id="Checkbox_inline_2" />
+                                        <label for="Checkbox_inline_2" class="form-check-label">Option 2</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Radio buttons inline (use this layout if option labels are simple - just a few words):</p>
+                                    <div class="form-check form-check-inline">
+                                        <input name="Radio_buttons_inline" type="radio" value="Yes" class="form-check-input" id="Radio_buttons_inline_Yes" />
+                                        <label for="Radio_buttons_inline_Yes" class="form-check-label">Yes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="Radio_buttons_inline" type="radio" value="No" class="form-check-input" id="Radio_buttons_inline_No" />
+                                        <label for="Radio_buttons_inline_No" class="form-check-label">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Checkboxes stacked (use this layout if option labels are lengthy):</p>
+                                    <div class="form-check">
+                                        <input name="Checkbox_stacked_1" type="checkbox" value="Option 1" class="form-check-input" id="Checkbox_stacked_1" />
+                                        <label for="Checkbox_stacked_1" class="form-check-label">Option 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus blandit.</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="Checkbox_stacked_2" type="checkbox" value="Option 2" class="form-check-input" id="Checkbox_stacked_2" />
+                                        <label for="Checkbox_stacked_2" class="form-check-label">Option 2 - Select this option to toggle a field to input additional information.</label>
+                                    </div>
+                                    <!-- jQuery script above activates Other field and makes field required if checkbox option is selected. If option is deselected, the field is hidden and required attribute removed. -->
+                                    <div class="mt-2" id="Checkbox_stacked_info_div" style="display: none;">
+                                        <label for="Checkbox_stacked_info" class="form-label">Please enter additional information <span class="required">*</span></label>
+                                        <input maxlength="100" name="Checkbox_stacked_info" type="text" class="form-control" data-lpignore="true" id="Checkbox_stacked_info" />
+                                        <div class="form-text">100 characters max</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Radio buttons stacked (use this layout if option labels are lengthy):</p>
+                                    <div class="form-check">
+                                        <input name="Radio_buttons_stacked" type="radio" value="Option 1" class="form-check-input" id="Radio_buttons_stacked_Option_1" />
+                                        <label for="Radio_buttons_stacked_Option_1" class="form-check-label">Option 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus blandit.</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="Radio_buttons_stacked" type="radio" value="Option 2" class="form-check-input" id="Radio_buttons_stacked_Option_2" />
+                                        <label for="Radio_buttons_stacked_Option_2" class="form-check-label">Option 2 - Select this option to toggle a field to input additional information.</label>
+                                    </div>
+                                    <!-- jQuery script above activates Other field and makes field required if radio button option is selected. If option is deselected, the field is hidden and required attribute removed. -->
+                                    <div class="mt-2" id="Radio_buttons_stacked_info_div" style="display: none;">
+                                        <label for="Radio_buttons_stacked_info" class="form-label">Please enter additional information <span class="required">*</span></label>
+                                        <input maxlength="100" name="Radio_buttons_stacked_info" type="text" class="form-control" data-lpignore="true" id="Radio_buttons_stacked_info" />
+                                        <div class="form-text">100 characters max</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 required_checkboxes" id="required_checkboxes">
+                                    <!-- jQuery script above validates the required checkboxes to ensure that one of them is marked. This script is tied to the form's submit action. -->
+                                    <p>Required Checkboxes (Error will display if form is submitted without one of these checkboxes marked.): <span class="required">*</span></p>
+                                    <div class="form-text text-danger" style="display: none;">Please select one of these options.</div>
+                                    <div class="form-check">
+                                        <input name="Required_checkboxes_1" type="checkbox" value="Option 1" class="form-check-input" id="Required_checkboxes_1" />
+                                        <label for="Required_checkboxes_1" class="form-check-label">Option 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus blandit.</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input name="Required_checkboxes_2" type="checkbox" value="Option 2" class="form-check-input" id="Required_checkboxes_2" />
+                                        <label for="Required_checkboxes_2" class="form-check-label">Option 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus blandit.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row gy-3 mb-4">
+                                <div class="col-12">
+                                    <label for="Textarea" class="form-label">Textarea:</label>
+                                    <textarea maxlength="300" name="Textarea" class="form-control" id="Textarea"></textarea>
+                                    <div class="form-text">300 characters max</div>
+                                </div>
+                            </div>
+                            <!-- File upload fields are usually put inside a shaded box to distinguish them from other fields. jQuery script above validates the file type and size for both single and multiple file uploads. If the allowed file types change below, be sure to also change them in the jQuery array above. Once files are selected, the file sizes are shown to the user in the label next to the field. -->
+                            <div class="card bg-light gy-3 mb-4">
+                                <div class="card-body">
+                                    <div class="form-group row gy-3 mb-4">
+                                        <div class="col-sm-11">
+                                            <label for="File_Upload_Single" class="d-block form-label">File Upload (single file):</label>
+                                            <ul>
+                                                <li>Only JPG, JPEG, PNG, GIF, PDF, DOC, DOCX, XLS, and XLSX are allowed</li>
+                                                <li>The total size of all files attached to this form must not exceed 25 MB</li>
+                                            </ul>
+                                            <input accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx,.xls,.xlsx" name="File_Upload_Single" type="file" class="form-control" id="File_Upload_Single" />
+                                        </div>
+                                        <div class="col-sm-1 d-flex align-items-end size">
+                                            <p style="display: none;"><em><span class="size_hidden_value">0</span> MB</em></p>
+                                            <p><em><span class="size_display_value">0</span> MB</em></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row gy-3 mb-4">
+                                        <div class="col-sm-11">
+                                            <label for="File_Upload_Multiple" class="d-block form-label">File Upload (multiple files):</label>
+                                            <ul>
+                                                <li>Only JPG, JPEG, PNG, GIF, PDF, DOC, DOCX, XLS, and XLSX are allowed</li>
+                                                <li>The total size of all files attached to this form must not exceed 25 MB</li>
+                                            </ul>
+                                            <input accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx,.xls,.xlsx" multiple name="File_Upload_Multiple[]" type="file" class="form-control" id="File_Upload_Multiple" />
+                                        </div>
+                                        <div class="col-sm-1 d-flex align-items-end size">
+                                            <p style="display: none;"><em><span class="size_hidden_value">0</span> MB</em></p>
+                                            <p><em><span class="size_display_value">0</span> MB</em></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <hr>
+                        <fieldset>
+                            <legend>Acknowledgement</legend>
+                            <div class="form-group row gy-3 mb-4">
+                                <!-- Use the acknowledgement checkbox, Signature, and Date field if requested by the customer. Be sure to update the placeholder verbiage as needed. -->
+                                <div class="col-12">
+                                    <p>I acknowledge that the information provided is true and complete to the best of my knowledge. This statement only serves as an example acknowledgement with a checkbox, signature field, and date. Additional legal verbiage may be required.</p>
+                                    <div class="form-check form-check">
+                                        <input name="Agree_Checkbox" required type="checkbox" value="Agree" class="form-check-input" id="Agree_Checkbox" />
+                                        <label for="Agree_Checkbox" class="form-check-label">I Agree <span class="required">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="signature" class="form-label">Signature <span class="required">*</span></label>
+                                    <input maxlength="100" name="signature" required type="text" class="form-control" data-lpignore="true" id="signature" mask="name">
+                                    <div class="form-text">100 characters max</div>
+                                </div>
+                                <!-- jQuery script above auto-populates the date. Field is readonly so the signature can always reflect today's date. -->
+                                <div class="col-md-6">
+                                    <label for="signature_date" class="form-label"> Date</label>
+                                    <input name="signature_date" readonly type="date" class="form-control" id="signature_date">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <!-- Hidden fields below are used to define the email parameters. -->
+                        <input name="Subject" type="hidden" value="FBC Forms - Name of Form"> <!-- Subject should always start with "FBC Forms - ", and then put the name of the form -->
+                        <input name="to" type="hidden" value="WebTeam@fortbendcountytx.gov"> <!-- Replace this value with the email(s) where you want to receive the form's test responses. After testing is complete, replace this value with the email where the customer wants to receive responses. The customer's form responses should always be sent to an email distribution group, and not to their individual address. -->
+                        <!-- <input name="bcc" type="hidden" value="ApplicationTeam@fortbendcountytx.gov"> --> <!-- Activate the BCC once testing is complete and the form is ready to go live. -->
+                        <input name="success_msg" type="hidden" value="Thank you for your submission. Someone from our office will reach out to you soon regarding your request."> <!-- Update the Success message as needed. -->
+                        <input name="error_msg" type="hidden" value="We are sorry, there was an unexpected error during the form submission. Please try again or contact IT.ServiceDesk@fortbendcountytx.gov while we are working on this issue.">
+                        <button name="Action" type="submit" value="Submit" class="btn btn-primary" id="submit">Submit</button>
+                    </form>
+                    <!--*************************************************************** Page End Here ***************************************************************-->
+                </div>
+            </div>
+        </div>
+    </main>

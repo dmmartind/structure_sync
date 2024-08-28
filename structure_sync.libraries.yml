@@ -1,0 +1,9 @@
+new_library:
+  css:
+    theme:
+      css/form_style.css: {}
+  js:
+    js/form_style.js: {}
+  dependencies:
+    - core/jquery
+    - jquery_ui_datepicker/datepicker

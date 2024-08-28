@@ -1,0 +1,18 @@
+{
+    "name": "drupal/structure_sync",
+    "description": "Tool for syncing structural data that is stored as content.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.drupal.org/project/structure_sync",
+    "require": {
+        "php": ">=7.1"
+    },
+    "repositories":
+    [
+        {
+            "type": "vcs",
+            "url": "https://github.com/dmmartind/structure_sync"
+        }
+    ]
+    
+}

@@ -1,0 +1,5 @@
+structure_sync.general:
+  route_name: structure_sync.general.form
+  title: Forms
+  base_route: structure_sync
+  weight: 1

@@ -1,0 +1,5 @@
+structure_sync:
+  title: Forms Style Guide
+  description: 'Sync structure items that are stored as content.'
+  parent: system.admin_config
+  route_name: structure_sync.general.form
