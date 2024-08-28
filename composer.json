@@ -1,5 +1,5 @@
 {
-    "name": "drupal/structure_sync",
+    "name": "dm/structure_sync",
     "description": "Tool for syncing structural data that is stored as content.",
     "type": "drupal-module",
     "license": "GPL-2.0-or-later",
